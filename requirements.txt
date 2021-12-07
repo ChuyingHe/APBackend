@@ -1,3 +1,9 @@
-uvicorn
+uvicorn == 0.15.0
+gunicorn
 fastapi
 psycopg2-binary
+pydantic
+SQLAlchemy
+alembic
+python-dotenv
+models
