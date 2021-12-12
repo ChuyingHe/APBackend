@@ -1,0 +1,6 @@
+**/.git
+.pytest_cache
+__pycache__
+.vscode
+*/**/_generated_
+# recursively ignore: using the **/
