@@ -1,9 +1,9 @@
-uvicorn == 0.15.0
+uvicorn~=0.15.0
 gunicorn
-fastapi
+fastapi~=0.70.0
 psycopg2-binary
-pydantic
-SQLAlchemy
+pydantic~=1.8.2
+SQLAlchemy~=1.4.27
 alembic
 python-dotenv
-models
+lagom~=1.4.1

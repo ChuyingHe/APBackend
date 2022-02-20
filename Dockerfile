@@ -2,7 +2,7 @@
 FROM python:3
 
 # Define & create working directory in Docker image instance
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
 # USER 0
 # RUN chown -R 1001:0 ./
@@ -16,7 +16,8 @@ COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy from "/app" directory TO "root of WORKDIR"
-COPY ./app .
+COPY ./app ./app
+COPY ./test ./test
 
 # The container listens on port 4000
 EXPOSE 4000

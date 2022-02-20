@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
+from app.infrastructure.database.db import config_db
 
 api_tags = [
     {
@@ -48,9 +49,13 @@ async def get_current_user():
 # Product -----------------------------------------------------
 @app.get("/products", tags=['product'])
 async def get_all_products():
-    return products;
+    test_db_connection()
+    return products
 
-
+def test_db_connection():
+    print("🦐 test_db_connection")
+    config_db()
 
 if __name__=="__main__":
+    test_db_connection()
     uvicorn.run(app, host="0.0.0.0", port=4000)
