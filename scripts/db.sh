@@ -1,18 +1,23 @@
 # https://hub.docker.com/_/postgres
-POSTGRES_CONTAINER="ap-backend-postgres"
+POSTGRES_CONTAINER="ap-postgres-container"
 
 docker pull postgres
 
-if [[ -z $(docker ps -a --filter="name=$POSTGRES_CONTAINER") ]]
+if [[ $(docker ps -a --filter="name=$POSTGRES_CONTAINER") ]]
 then
-  echo "Creating container $POSTGRES_CONTAINER ..."
-  docker run --name $POSTGRES_CONTAINER -e POSTGRES_PASSWORD=topsecret -d postgres
+  echo "> Creating container $POSTGRES_CONTAINER ..."
+  docker run --name $POSTGRES_CONTAINER \
+    -e POSTGRES_USER=root \
+    -e POSTGRES_PASSWORD=top_secret \
+    -e POSTGRES_DB=asianpearl_db \
+    -p 5432:5432 \
+    -d postgres
 else
   if [[ -z $(docker ps --filter="name=$POSTGRES_CONTAINER") ]]
   then
-    echo "Container $POSTGRES_CONTAINER is already running"
+    echo "> Container $POSTGRES_CONTAINER is already running"
   else
-    echo "Restarting existing $POSTGRES_CONTAINER"
+    echo "> Restarting existing $POSTGRES_CONTAINER"
     docker restart $POSTGRES_CONTAINER
   fi
 fi

@@ -35,6 +35,10 @@ products = [
 
 app = FastAPI(openapi_tags=api_tags)
 
+@app.on_event("startup")
+async def startup():
+    config_db()
+
 # Operation -----------------------------------------------------
 @app.get("/", tags=['operation'])
 async def root():
@@ -49,13 +53,9 @@ async def get_current_user():
 # Product -----------------------------------------------------
 @app.get("/products", tags=['product'])
 async def get_all_products():
-    test_db_connection()
-    return products
-
-def test_db_connection():
-    print("🦐 test_db_connection")
-    config_db()
+    pass
+    # test_db_connection()
+    # return products
 
 if __name__=="__main__":
-    test_db_connection()
     uvicorn.run(app, host="0.0.0.0", port=4000)
