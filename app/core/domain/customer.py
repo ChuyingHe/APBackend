@@ -4,9 +4,11 @@ from typing import Optional
 from pydantic import BaseModel
 import enum
 
+
 class Gender(str, enum):
-    male="männlich"
-    female="weblich"
+    male = "männlich"
+    female = "weblich"
+
 
 class Customer(BaseModel):
     customer_id: str
