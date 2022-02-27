@@ -6,7 +6,7 @@ from core.domain.order import Order
 
 class OrderRepositoryBase(ABC):
     @abstractmethod
-    def add_order(self) -> Order:
+    def add_order(self, order: Order) -> Order:
         pass
 
     @abstractmethod

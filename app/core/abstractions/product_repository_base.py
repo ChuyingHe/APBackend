@@ -7,7 +7,7 @@ from core.domain.product import Product
 class ProductRepositoryBase(ABC):
     # CRUD
     @abstractmethod
-    def add_product(self) -> Product:
+    def add_product(self, product: Product) -> Product:
         pass
 
     @abstractmethod
