@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import List
 
 from app.core.domain.customer import Customer
 
@@ -6,10 +7,14 @@ class CustomerRepositoryBase(ABC):
     # CRUD
     # C: add new customer
     @abstractmethod
-    def add(self, customer: Customer) -> Customer:
+    def add_customer(self, customer: Customer) -> Customer:
         pass
 
-    # R: get info of one custoner
+    # R
+    @abstractmethod
+    def get_customers(self) -> List[Customer]:
+        pass
+
     @abstractmethod
     def get_customer(self, customer_id: str) -> Customer:
         pass
